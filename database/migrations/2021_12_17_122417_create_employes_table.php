@@ -17,11 +17,16 @@ class CreateEmployesTable extends Migration
             $table->id();
             $table->string("NOM");
             $table->string("prenom");
+            $table->string("image");
             $table->string("email");
             $table->string("password");
-            $table->date("date_nessance");
+            $table->date("date_naissance");
             $table->string("nmro_tel");
             $table->string("sexe");
+            $table->foreignId('adresse_id');
+            $table->foreign('adresse_id')->references('id')->on('adresses')->onDelete('cascade');
+            $table->foreignId('statut_id');
+            $table->foreign('statut_id')->references('id')->on('statuts')->onDelete('cascade');
             $table->timestamps();
         });
     }

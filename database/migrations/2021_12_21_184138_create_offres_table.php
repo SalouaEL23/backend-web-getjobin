@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateOffresCandicatsTable extends Migration
+class CreateOffresTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,12 @@ class CreateOffresCandicatsTable extends Migration
      */
     public function up()
     {
-        Schema::create('offres_candicats', function (Blueprint $table) {
+        Schema::create('offres', function (Blueprint $table) {
             $table->id();
             $table->string("titre");
             $table->string("type");
+            $table->foreignId('entreprise_id');
+            $table->foreign('entreprise_id')->references('id')->on('entreprises')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -28,6 +30,6 @@ class CreateOffresCandicatsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('offres_candicats');
+        Schema::dropIfExists('offres');
     }
 }

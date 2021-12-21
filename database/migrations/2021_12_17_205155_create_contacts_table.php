@@ -18,7 +18,8 @@ class CreateContactsTable extends Migration
             $table->string("adreess");
             $table->string("nmro");
             $table->string("email");
-            $table->string("comptes");
+            $table->foreignId('mycv_id');
+            $table->foreign('mycv_id')->references('id')->on('mycvs')->onDelete('cascade');
             $table->timestamps();
         });
     }

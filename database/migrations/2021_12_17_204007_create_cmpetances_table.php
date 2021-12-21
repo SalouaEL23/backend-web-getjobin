@@ -15,8 +15,10 @@ class CreateCmpetancesTable extends Migration
     {
         Schema::create('cmpetances', function (Blueprint $table) {
             $table->id();
-            $table->string("type");
-            $table->string("niveau");
+            $table->string("libelle");
+            $table->string("desc");
+            $table->foreignId('mycv_id');
+            $table->foreign('mycv_id')->references('id')->on('mycvs')->onDelete('cascade');
             $table->timestamps();
         });
     }

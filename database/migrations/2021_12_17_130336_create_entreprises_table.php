@@ -16,10 +16,13 @@ class CreateEntreprisesTable extends Migration
         Schema::create('entreprises', function (Blueprint $table) {
             $table->id();
             $table->string("nom_ent");
+            $table->string("logo");
             $table->string("description");
-            $table->string("code_postal");
             $table->string("email");
-            $table->string("nemero");
+            $table->string("nemuro");
+            $table->string("password");
+            $table->foreignId('adresse_id');
+            $table->foreign('adresse_id')->references('id')->on('adresses')->onDelete('cascade');
             $table->timestamps();
         });
     }

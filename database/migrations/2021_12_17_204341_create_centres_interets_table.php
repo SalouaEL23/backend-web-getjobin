@@ -16,6 +16,8 @@ class CreateCentresInteretsTable extends Migration
         Schema::create('centres_interets', function (Blueprint $table) {
             $table->id();
             $table->string("description");
+            $table->foreignId('mycv_id');
+            $table->foreign('mycv_id')->references('id')->on('mycvs')->onDelete('cascade');
             $table->timestamps();
         });
     }

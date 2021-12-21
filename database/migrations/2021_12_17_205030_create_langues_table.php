@@ -15,7 +15,10 @@ class CreateLanguesTable extends Migration
     {
         Schema::create('langues', function (Blueprint $table) {
             $table->id();
-            $table->string("type");
+            $table->string("intitule");
+            $table->string("niveau");
+            $table->foreignId('mycv_id');
+            $table->foreign('mycv_id')->references('id')->on('mycvs')->onDelete('cascade');
             $table->timestamps();
         });
     }

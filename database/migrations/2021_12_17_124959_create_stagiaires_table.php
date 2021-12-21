@@ -15,14 +15,18 @@ class CreateStagiairesTable extends Migration
     {
         Schema::create('stagiaires', function (Blueprint $table) {
             $table->id();
-            $table->string("NOM");
+            $table->string("nom");
             $table->string("prenom");
             $table->string("email");
+            $table->string("image");
             $table->string("password");
-            $table->date("date_nessance");
+            $table->date("date_naissance");
             $table->string("nmro_tel");
             $table->string("sexe");
-            $table->string("dure_stage");
+            $table->foreignId('adresse_id');
+            $table->foreign('adresse_id')->references('id')->on('adresses')->onDelete('cascade');
+            $table->foreignId('statut_id');
+            $table->foreign('statut_id')->references('id')->on('statuts')->onDelete('cascade');
             $table->timestamps();
         });
     }

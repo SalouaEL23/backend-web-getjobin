@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCVsTable extends Migration
+class CreatePostempsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,12 @@ class CreateCVsTable extends Migration
      */
     public function up()
     {
-        Schema::create('_c_vs', function (Blueprint $table) {
+        Schema::create('postemps', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('offre_id');
+            $table->foreign('offre_id')->references('id')->on('offres')->onDelete('cascade');
+            $table->foreignId('employe_id');
+            $table->foreign('employe_id')->references('id')->on('employes')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -26,6 +30,6 @@ class CreateCVsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('_c_vs');
+        Schema::dropIfExists('postemps');
     }
 }

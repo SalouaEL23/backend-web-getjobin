@@ -18,6 +18,8 @@ class CreateExperiencesTable extends Migration
             $table->string("type");
             $table->string("poste");
             $table->date("duree");
+            $table->foreignId('mycv_id');
+            $table->foreign('mycv_id')->references('id')->on('mycvs')->onDelete('cascade');
             $table->timestamps();
         });
     }

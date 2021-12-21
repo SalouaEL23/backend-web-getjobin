@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDeposersTable extends Migration
+class CreateMycvsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class CreateDeposersTable extends Migration
      */
     public function up()
     {
-        Schema::create('deposers', function (Blueprint $table) {
+        Schema::create('mycvs', function (Blueprint $table) {
             $table->id();
-            $tabke->string("description");
+            $table->string("image");
+            $table->string("profil");
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ class CreateDeposersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('deposers');
+        Schema::dropIfExists('mycvs');
     }
 }

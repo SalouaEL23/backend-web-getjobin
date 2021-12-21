@@ -16,8 +16,11 @@ class CreateCertificationsTable extends Migration
         Schema::create('certifications', function (Blueprint $table) {
             $table->id();
             $table->string("titre");
+
             $table->date("date_debut");
             $table->date("date_fin");
+            $table->foreignId('mycv_id');
+            $table->foreign('mycv_id')->references('id')->on('mycvs')->onDelete('cascade');
             $table->timestamps();
         });
     }
